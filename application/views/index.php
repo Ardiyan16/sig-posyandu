@@ -64,7 +64,7 @@
                         <div class="card card-hover">
                             <div style="height: 150px;" class="box bg-success text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-school"></i></h1>
-                                <h6 class="text-white">Jumlah Peserta Didik : Aktif </h6>
+                                <h6 class="text-white">Jumlah Posyandu : Aktif </h6>
                                 <h2 class="text-white">12</h2>
 
                             </div>
@@ -74,7 +74,7 @@
                         <div class="card card-hover">
                             <div style="height: 150px;" class="box bg-danger text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
-                                <h6 class="text-white">Jumlah Peserta Didik : Non-Aktif</h6>
+                                <h6 class="text-white">Jumlah Anggota Posyandu : Non-Aktif</h6>
                                 <h2 class="text-white">12</h2>
 
                             </div>
@@ -84,7 +84,7 @@
                         <div class="card card-hover">
                             <div style="height: 150px;" class="box bg-cyan text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-account"></i></h1>
-                                <h6 class="text-white">Jumlah GTK</h6>
+                                <h6 class="text-white">Jumlah Bidan</h6>
                                 <h2 class="text-white">12</h2>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                         <div class="card card-hover">
                             <div style="height: 150px;" class="box bg-warning text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-account-multiple"></i></h1>
-                                <h6 class="text-white">Jumlah Rombel</h6>
+                                <h6 class="text-white">Jumlah Jadwal Imunisasi</h6>
                                 <h2 class="text-white">21</h2>
 
                             </div>
