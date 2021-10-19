@@ -25,7 +25,7 @@
                         <span class="db"><img src="<?= base_url() ?>assets/images/logo-posyandu.png" alt="logo" width="125px" height="125px" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" class="user" method="post" action="<?= base_url('Auth/registration'); ?>">
+                    <form class="form-horizontal m-t-20" class="user" method="post" action="<?= base_url('Auth/registration'); ?>" enctype="multipart/form-data">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <?= $this->session->flashdata('message'); ?>

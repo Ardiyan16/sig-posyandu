@@ -8,13 +8,22 @@ class Auth extends CI_Controller
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->library('upload');
-		$this->load->helper(array('url','form'));
+		$this->load->helper(array('form', 'url'));
 	}
 
 	public function index()
 	{
-		$data['title'] = 'Login Page';
+		
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Login Page';
 		$this->load->view('auth/authentication-login');
+        } else {
+            // validasinya success
+            $this->login();
+        }
 	}
 
 	public function register()
@@ -24,82 +33,42 @@ class Auth extends CI_Controller
 	}
 
 
-	private function _login()
+	public function login()
 	{
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
+		$email = $this->input->post('email');
+        $password = $this->input->post('password');
 
-		$user = $this->db->get_where('users', ['username' => $username])->row_array();
-		$array = array('username' => $username, 'password' => $password);
-		$pass = $this->db->get_where('users', $array)->row_array();
-		if ($user > 0) {
-			if ($pass > 0) {
-				if ($pass['jabatan'] == 1) {
-					$data_session = array(
-						'username' => $username,
-						'jabatan' => 1,
-						'status' => "login"
-					);
-					$this->session->set_userdata($data_session);
-					redirect('admin/indexkepsek');
-				} else if ($pass['jabatan'] == 2) {
-					$data_session = array(
-						'username' => $username,
-						'jabatan' => 2,
-						'id_gtk' => $pass['id_gtk'],
-						'nama_gtk' => $pass['nama_gtk'],
-						'status' => "login"
-					);
-					$this->session->set_userdata($data_session);
-					redirect('admin/indexguru');
-				} else if ($pass['jabatan'] == 3) {
-					$data_session = array(
-						'username' => $username,
-						'jabatan' => 3,
-						'status' => "login"
-					);
-					$this->session->set_userdata($data_session);
-					redirect('admin/indexoperator');
-				} else if ($pass['jabatan'] == 4) {
-					$data_session = array(
-						'username' => $username,
-						'jabatan' => 4,
-						'status' => "login"
-					);
-					$this->session->set_userdata($data_session);
-					redirect('admin/indextu');
-				}
-			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password anda salah!</div>');
-				redirect('auth');
-			}
-		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username anda salah!</div>');
-			redirect('auth');
-		}
-
-		// jika usernya ada
-		/*  if ($user) {
-
-            if (password_verify($password, $user['username'])) {
-                $data = [
-                    'username' => $user['username'],
-                    'jabatan' => $user['jabatan']
-                ];
-                $this->session->set_userdata($data);
-                if ($user['jabatan'] == 1) {
-                    redirect('admin');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        // jika usernya ada
+        if ($user) {
+            // jika usernya aktif
+            if ($user['is_active'] == 1) {
+                // cek password
+                if (password_verify($password, $user['password'])) {
+                    $data = [
+                        'email' => $user['email'],
+                        'role' => $user['role']
+                    ];
+                    $this->session->set_userdata($data);
+                    if ($user['role'] == 'user') {
+                        redirect('Dashboard/index');
+                    } else if($user['role'] == 'bidan') {
+                        redirect('Dashboard/bidan');
+                    }else{
+                        redirect('Dashboard/admin');
+					}
                 } else {
-                    redirect('user');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
+                    redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password anda salah!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tidak terdaftar</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
             redirect('auth');
-        }*/
+        }
 	}
 
 
@@ -144,7 +113,7 @@ class Auth extends CI_Controller
 	private function _uploadImage()
     {
         $config['upload_path']          =  './assets/ktp';
-        $config['allowed_types']        = 'gif|jpg|png|JPG';
+        $config['allowed_types']        = 'jpeg|jpg|png|JPG';
         $config['max_size']             = 9048;
         $config['overwrite']            = true;
         $config['file_name']            = $_FILES['foto_ktp']['name'];
@@ -154,9 +123,8 @@ class Auth extends CI_Controller
         if ($this->upload->do_upload('foto_ktp')) {
             return $this->upload->data("file_name");
         }
-
         return "default.jpg";
-	}		
+	}
 
 
 	private function _sendEmail($token, $type)

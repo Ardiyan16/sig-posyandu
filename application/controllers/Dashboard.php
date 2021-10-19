@@ -26,5 +26,13 @@ class Dashboard extends CI_Controller
         // $data['count'] = $this->M_peserta_didik->getCountSiswaAktif();
         $this->load->view('index');
     }       
+
+	public function bidan(){
+		$this->load->view('index');
+	}
+	public function admin(){
+		$this->load->view('index');
+	}
+	
     
 }
