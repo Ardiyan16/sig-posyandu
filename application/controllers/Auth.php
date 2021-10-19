@@ -51,6 +51,14 @@ class Auth extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
                     if ($user['role'] == 'user') {
+						$data_session = array(
+							'iduser' => $user['id'],
+							'email' => $user['email'],
+							'namauser' => $user['nama'],
+							'role' => $user['role'],
+							'status' => 'login'
+							);
+						$this->session->set_userdata($data_session);
                         redirect('Dashboard/index');
                     } else if($user['role'] == 'bidan') {
                         redirect('Dashboard/bidan');
