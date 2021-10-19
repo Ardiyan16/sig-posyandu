@@ -34,7 +34,19 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
+                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Nama Anda..." value="<?= set_value('email'); ?>">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Email..." value="<?= set_value('email'); ?>">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i style="margin-right: 4px;" class="ti-user"></i>      Upload KTP</span>
+                                    </div>
+                                    <input type="file" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
                                 </div>
                                 <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                 <div class="input-group mb-3">
@@ -43,14 +55,24 @@
                                     </div>
                                     <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Masukan Password..." value="<?= set_value('password'); ?>">
                                 </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+									<span id="basic-addon1"><button class="btn btn-primary" type="button" onclick="getLocation()">Cek Lokasi</button></i></span>
+                                    </div>
+                                    <input class="form-control " type="text" name="longitude" id="longitude">
+								<input class="form-control " type="text" name="latitude" id="latitude">
+                                </div>
+								<div class="input-group mb-3">
+								<div id="mapcanvas"></div>
+								</div>
                             </div>
                         </div>
                         <div class="row border-top border-secondary">
                             <div class="col-12">
-                                <div class="form-group">
+                                <div class="form-group text-center">
                                     <div class="p-t-20">
-                                        <button style="width: 170px;" class="btn btn-success text-center" type="submit">Login</button>
-                                        <a href="<?= base_url('Auth/register') ?>" style="width: 170px;" class="btn btn-info text-center" >Register</a>
+                                        <button style="width: 170px;" class="btn btn-success text-center" type="submit">Register</button>
+                                        <a href="<?= base_url('Auth') ?>" style="width: 170px;" class="btn btn-info text-center" type="submit">Sudah Punya akun?</a>
                                     </div>
                                 </div>
                             </div>
@@ -106,6 +128,59 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url() ?>assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?= base_url() ?>assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	 <script src="http://maps.google.com/maps/api/js"></script>
+    <script>
+        var view = document.getElementById("tampilkan");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                view.innerHTML = "Yah browsernya ngga support Geolocation bro!";
+            }
+        }
+
+        function showPosition(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            $('#longitude').val(position.coords.longitude)
+            $('#latitude').val(position.coords.latitude)
+            latlon = new google.maps.LatLng(lat, lon)
+            mapcanvas = document.getElementById('mapcanvas')
+            mapcanvas.style.height = '200px';
+            mapcanvas.style.width = '200px';
+
+            var myOptions = {
+                center: latlon,
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+
+            var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+            var marker = new google.maps.Marker({
+                position: latlon,
+                map: map,
+                title: "You are here!"
+            });
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    view.innerHTML = "Yah, mau deteksi lokasi tapi ga boleh :("
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    view.innerHTML = "Yah, Info lokasimu nggak bisa ditemukan nih"
+                    break;
+                case error.TIMEOUT:
+                    view.innerHTML = "Requestnya timeout bro"
+                    break;
+                case error.UNKNOWN_ERROR:
+                    view.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+    </script>
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->

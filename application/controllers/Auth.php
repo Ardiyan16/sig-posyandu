@@ -34,6 +34,11 @@ class Auth extends CI_Controller
         // }
     }
 
+	public function register(){
+		$data['title'] = 'Register Page';
+            $this->load->view('auth/authentication-register');
+	}
+
 
     private function _login()
     {
