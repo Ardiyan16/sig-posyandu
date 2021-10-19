@@ -25,42 +25,50 @@
                         <span class="db"><img src="<?= base_url() ?>assets/images/logo-posyandu.png" alt="logo" width="125px" height="125px" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" class="user" method="post" action="<?= base_url('auth'); ?>">
+                    <form class="form-horizontal m-t-20" class="user" method="post" action="<?= base_url('Auth/registration'); ?>">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <?= $this->session->flashdata('message'); ?>
-                                <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                                 <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Nama Anda..." value="<?= set_value('email'); ?>">
+                                    <input type="text" class="form-control form-control-lg" id="nama" name="nama" placeholder="Masukan Nama Anda..." value="<?= set_value('nama'); ?>">
                                 </div>
+								<?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                                 <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Email..." value="<?= set_value('email'); ?>">
+                                    <input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="Masukan Email..." value="<?= set_value('email'); ?>">
                                 </div>
+								<?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control form-control-lg" id="password1" name="password1" placeholder="Masukan Password..." value="<?= set_value('password1'); ?>">
+                                </div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control form-control-lg" id="password2" name="password2" placeholder="Ulangi Password..." value="<?= set_value('password2'); ?>">
+                                </div>
+								<?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i style="margin-right: 4px;" class="ti-user"></i>      Upload KTP</span>
                                     </div>
-                                    <input type="file" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username..." value="<?= set_value('email'); ?>">
+                                    <input type="file" class="form-control form-control-lg" id="foto_ktp" name="foto_ktp">
                                 </div>
-                                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
-                                    </div>
-                                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Masukan Password..." value="<?= set_value('password'); ?>">
-                                </div>
+                                <?= form_error('foto_ktp', '<small class="text-danger pl-3">', '</small>'); ?>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
 									<span id="basic-addon1"><button class="btn btn-primary" type="button" onclick="getLocation()">Cek Lokasi</button></i></span>
                                     </div>
-                                    <input class="form-control " type="text" name="longitude" id="longitude">
-								<input class="form-control " type="text" name="latitude" id="latitude">
+                                    <input class="form-control " placeholder="Longitude.." type="text" name="longitude" id="longitude" readonly>
+									<input class="form-control " placeholder="Latitude" type="text" name="latitude" id="latitude" readonly>
                                 </div>
 								<div class="input-group mb-3">
 								<div id="mapcanvas"></div>
