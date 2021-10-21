@@ -13,21 +13,56 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
-		
+		if ($this->session->userdata('status') == 'login') {
+			if ($this->session->userdata('role') == 'user') {
+				echo "<script>
+                alert('Anda sudah login sebagai User');
+                window.location.href = '" . base_url('User') . "';
+            </script>"; //Url tujuan
+			} else if ($this->session->userdata('role') == 'bidan') {
+				echo "<script>
+                alert('Anda sudah login sebagai Bidan');
+                window.location.href = '" . base_url('Bidan') . "';
+            </script>"; //U
+			} else if ($this->session->userdata('role') == 'admin') {
+				echo "<script>
+                alert('Anda sudah login sebagai Admin');
+                window.location.href = '" . base_url('Admin') . "';
+            </script>"; //U
+			}
+		}
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-        if ($this->form_validation->run() == false) {
-            $data['title'] = 'Login Page';
-		$this->load->view('auth/authentication-login');
-        } else {
-            // validasinya success
-            $this->login();
-        }
+		if ($this->form_validation->run() == false) {
+			$data['title'] = 'Login Page';
+			$this->load->view('auth/authentication-login');
+		} else {
+			// validasinya success
+			$this->login();
+		}
 	}
 
 	public function register()
 	{
+		if ($this->session->userdata('status') == 'login') {
+			if ($this->session->userdata('role') == 'user') {
+				echo "<script>
+                alert('Anda sudah login sebagai User');
+                window.location.href = '" . base_url('User') . "';
+            </script>"; //Url tujuan
+			} else if ($this->session->userdata('role') == 'bidan') {
+				echo "<script>
+                alert('Anda sudah login sebagai Bidan');
+                window.location.href = '" . base_url('Bidan') . "';
+            </script>"; //U
+			} else if ($this->session->userdata('role') == 'admin') {
+				echo "<script>
+                alert('Anda sudah login sebagai Admin');
+                window.location.href = '" . base_url('Admin') . "';
+            </script>"; //U
+			}
+		}
 		$data['title'] = 'Register Page';
 		$this->load->view('auth/authentication-register');
 	}
@@ -35,48 +70,65 @@ class Auth extends CI_Controller
 
 	public function login()
 	{
-		$email = $this->input->post('email');
-        $password = $this->input->post('password');
 
-        $user = $this->db->get_where('user', ['email' => $email])->row_array();
-        // jika usernya ada
-        if ($user) {
-            // jika usernya aktif
-            if ($user['is_active'] == 1) {
-                // cek password
-                if (password_verify($password, $user['password'])) {
-                    $data = [
-                        'email' => $user['email'],
-                        'role' => $user['role']
-                    ];
-                    $this->session->set_userdata($data);
-                    if ($user['role'] == 'user') {
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+		// jika usernya ada
+		if ($user) {
+			// jika usernya aktif
+			if ($user['is_active'] == 1) {
+				// cek password
+				if (password_verify($password, $user['password'])) {
+					$data = [
+						'email' => $user['email'],
+						'role' => $user['role']
+					];
+					$this->session->set_userdata($data);
+					if ($user['role'] == 'user') {
 						$data_session = array(
 							'iduser' => $user['id'],
 							'email' => $user['email'],
-							'namauser' => $user['nama'],
+							'nama' => $user['nama'],
 							'role' => $user['role'],
 							'status' => 'login'
-							);
+						);
 						$this->session->set_userdata($data_session);
-                        redirect('Dashboard/index');
-                    } else if($user['role'] == 'bidan') {
-                        redirect('Dashboard/bidan');
-                    }else{
-                        redirect('Dashboard/admin');
+						redirect('User');
+					} else if ($user['role'] == 'bidan') {
+						$data_session = array(
+							'iduser' => $user['id'],
+							'email' => $user['email'],
+							'nama' => $user['nama'],
+							'role' => $user['role'],
+							'status' => 'login'
+						);
+						$this->session->set_userdata($data_session);
+						redirect('Bidan');
+					} else {
+						$data_session = array(
+							'iduser' => $user['id'],
+							'email' => $user['email'],
+							'nama' => $user['nama'],
+							'role' => $user['role'],
+							'status' => 'login'
+						);
+						$this->session->set_userdata($data_session);
+						redirect('Admin');
 					}
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-                    redirect('auth');
-                }
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
-                redirect('auth');
-            }
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-            redirect('auth');
-        }
+				} else {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
+					redirect('auth');
+				}
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
+				redirect('auth');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+			redirect('auth');
+		}
 	}
 
 
@@ -114,24 +166,22 @@ class Auth extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please activate your account</div>');
 			redirect('Auth');
 		}
-
-		
 	}
 
 	private function _uploadImage()
-    {
-        $config['upload_path']          =  './assets/ktp';
-        $config['allowed_types']        = 'jpeg|jpg|png|JPG';
-        $config['max_size']             = 9048;
-        $config['overwrite']            = true;
-        $config['file_name']            = $_FILES['foto_ktp']['name'];
+	{
+		$config['upload_path']          =  './assets/ktp';
+		$config['allowed_types']        = 'jpeg|jpg|png|JPG';
+		$config['max_size']             = 9048;
+		$config['overwrite']            = true;
+		$config['file_name']            = $_FILES['foto_ktp']['name'];
 		$this->upload->initialize($config);
-        $this->load->library('upload', $config);
+		$this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('foto_ktp')) {
-            return $this->upload->data("file_name");
-        }
-        return "default.jpg";
+		if ($this->upload->do_upload('foto_ktp')) {
+			return $this->upload->data("file_name");
+		}
+		return "default.jpg";
 	}
 
 

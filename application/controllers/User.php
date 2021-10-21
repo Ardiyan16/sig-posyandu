@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class User extends CI_Controller
 {
     public function __construct()
     {
@@ -24,10 +24,10 @@ class Admin extends CI_Controller
 			alert('Anda sudah login sebagai Bidan');
 			window.location.href = '" . base_url('Bidan') . "';
 		</script>"; //U
-		} else if ($this->session->userdata('role') == 'user') {
+		} else if ($this->session->userdata('role') == 'admin') {
 			echo "<script>
-			alert('Anda sudah login sebagai User');
-			window.location.href = '" . base_url('User') . "';
+			alert('Anda sudah login sebagai Admin');
+			window.location.href = '" . base_url('Admin') . "';
 		</script>"; //U
 		}
     }
@@ -44,17 +44,10 @@ class Admin extends CI_Controller
         // $data['waktu'] = formatHariTanggal($waktu);
         // $data['jabatan'] = $this->session->userdata('jabatan');
         // $data['count'] = $this->M_peserta_didik->getCountSiswaAktif();
-        $this->load->view('Admin/index');
-    } 
-	
-	public function addPosyandu(){
-		$this->load->view('Admin/add_posyandu');
-	}
-	public function listPosyandu(){
-		$this->load->view('Admin/list_posyandu');
-	}
+        $this->load->view('User/index');
+    }       
 
-	
+
 	
     
 }

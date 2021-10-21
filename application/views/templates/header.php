@@ -37,8 +37,5 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <?php if ($this->session->userdata('username') == null) {
-        // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda harus masuk terlebih dahulu !</div>');
-        // redirect('auth');
-    } ?>
+    
 </head>
