@@ -46,13 +46,39 @@ class Admin extends CI_Controller
         // $data['count'] = $this->M_peserta_didik->getCountSiswaAktif();
         $this->load->view('Admin/index');
     } 
-	
 	public function addPosyandu(){
 		$this->load->view('Admin/add_posyandu');
 	}
 	public function listPosyandu(){
 		$this->load->view('Admin/list_posyandu');
 	}
+
+
+
+	public function addBidan(){
+		$this->load->view('Admin/add_bidan');
+	}
+	public function addBidanAction(){
+		$data = [
+			'nama' => htmlspecialchars($this->input->post('nama_bidan')),
+			'email' => htmlspecialchars($this->input->post('email')),
+			'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+			'foto_ktp' => 'default.jpg',
+			'longitude' => '-',
+			'latitude' => '-',
+			'is_active' => 1,
+			'role' => 'bidan'
+		];
+		$this->db->insert('user', $data);
+		redirect('Admin/listBidan');
+	}
+	public function listBidan(){
+		$data['bidan'] = $this->db->query("SELECT * FROM user WHERE role='bidan'")->result();
+		$this->load->view('Admin/list_bidan',$data);
+	}
+
+	
+	
 
 	
 	

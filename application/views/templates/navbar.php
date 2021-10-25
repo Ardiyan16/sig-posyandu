@@ -113,6 +113,12 @@
 							<li class="sidebar-item"><a href="<?= base_url() ?>Admin/addPosyandu" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Tambah Posyandu</span></a></li>
 						</ul>
 					</li>
+					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Data Bidan</span></a>
+						<ul aria-expanded="false" class="collapse  first-level">
+							<li class="sidebar-item"><a href="<?= base_url() ?>Admin/listBidan" class="sidebar-link"><i class="mdi mdi-account"></i><span class="hide-menu">Daftar Bidan</span></a></li>
+							<li class="sidebar-item"><a href="<?= base_url() ?>Admin/addBidan" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Tambah Bidan</span></a></li>
+						</ul>
+					</li>
 				<?php } ?>
 				<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Jadwal Imunisasi</span></a>
 					<ul aria-expanded="false" class="collapse  first-level">
