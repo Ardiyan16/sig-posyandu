@@ -42,7 +42,7 @@
 			<div class="page-breadcrumb">
 				<div class="row">
 					<div class="col-12 d-flex no-block align-items-center">
-						<h4 class="page-title">Bidan</h4>
+						<h4 class="page-title">Imunisasi</h4>
 						<div class="ml-auto text-right">
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-header" style="background:#2980b9; color:#fff;">List Bidan</h5><br>
+								<h5 class="card-header" style="background:#2980b9; color:#fff;">Jenis Imunisasi</h5><br>
 								<div class="form-gruop">
 
 									<div class="text-right">
@@ -80,22 +80,22 @@
 										<thead>
 											<tr>
 												<th><b>No</b></th>
-												<th><b>Nama Bidan</b></th>
-												<th><b>Foto Ktp</b></th>
+												<th><b>Nama Vaksin</b></th>
+												<th><b>Umur</b></th>
 												<th><b>Aksi</b></th>
 											</tr>
 										</thead>
 										<tbody>
 											<?php
 											$no = 1;
-											foreach ($bidan as $b) : ?>
+											foreach ($imunisasi as $i) : ?>
 												<tr>
 													<td><?= $no++; ?></td>
-													<td><?= $b->nama ?></td>
-													<td><img src="<?= base_url('assets/ktp/' . $b->foto_ktp) ?>" width="100px" height="130px" alt=""></td>
+													<td><?= $i->nama ?></td>
+													<td><?= $i->umur ?></td>
 													<td>
-														<a onclick="return confirm('Apakah Anda Ingin Mengubah Aktivasi  ?');" href="<?= base_url('Admin/is_active/'. $b->id) ?>" class="btn <?= $b->is_active == 1 ? 'btn-info' : 'btn-warning'  ?>"><?= $b->is_active == 1 ? 'Aktif' : 'Non-Aktif' ?></a>
-														<a type="button" href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
+														<a onclick="return confirm('Apakah Anda Ingin Mengubah Aktivasi  ?');" href="<?= base_url('Admin/is_active/'. $i->id) ?>" class="btn <?= $b->is_active == 1 ? 'btn-info' : 'btn-warning'  ?>"><?= $b->is_active == 1 ? 'Aktif' : 'Non-Aktif' ?></a>
+														<a type="button" href="<?= base_url('Admin/deleteImunisasi/' . $i->id);   ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
 													</td>
 												</tr>
 											<?php endforeach; ?>

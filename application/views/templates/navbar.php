@@ -119,18 +119,15 @@
 							<li class="sidebar-item"><a href="<?= base_url() ?>Admin/addBidan" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Tambah Bidan</span></a></li>
 						</ul>
 					</li>
-				<?php } ?>
-				<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Jadwal Imunisasi</span></a>
+					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-library"></i><span class="hide-menu">Imunisasi</span></a>
 					<ul aria-expanded="false" class="collapse  first-level">
-						<li class="sidebar-item"><a href="<?= base_url() ?>rombel/" class="sidebar-link"><i class="mdi mdi-account-multiple"></i><span class="hide-menu"> Rombongan Belajar </span></a></li>
-						<li class="sidebar-item"><a href="<?= base_url() ?>mapel/mapel" class="sidebar-link"><i class="mdi mdi-library"></i><span class="hide-menu"> Daftar Mata Pelajaran </span></a></li>
-						<li class="sidebar-item"> <a href="<?= base_url() ?>mapel/" class="sidebar-link"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu"> Jadwal Mata Peljaran</span></a></li>
-						<li class="sidebar-item"><a href="<?= base_url() ?>Ekskul/index" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Ekstrakurikuler </span></a></li>
-						<!-- <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Penilaian Siswa </span></a></li> -->
-						<li class="sidebar-item"><a href="<?= base_url() ?>Absensi_siswa/index" class="sidebar-link"><i class="mdi mdi-calendar-check"></i><span class="hide-menu"> Absensi Peserta Didik </span></a></li>
+						<li class="sidebar-item"><a href="<?= base_url() ?>rombel/" class="sidebar-link"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Jenis Imunisasi</span></a></li>
+						<li class="sidebar-item"><a href="<?= base_url() ?>mapel/mapel" class="sidebar-link"><i class="mdi mdi-library"></i><span class="hide-menu">Jadwal Imunisasi</span></a></li>
 
 					</ul>
 				</li>
+				<?php } ?>
+				
 
 				<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-pen"></i><span class="hide-menu">Laporan</span></a>
 					<ul aria-expanded="false" class="collapse  first-level">

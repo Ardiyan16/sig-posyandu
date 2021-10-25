@@ -42,7 +42,7 @@
 			<div class="page-breadcrumb">
 				<div class="row">
 					<div class="col-12 d-flex no-block align-items-center">
-						<h4 class="page-title">Bidan</h4>
+						<h4 class="page-title">Imunisasi</h4>
 						<div class="ml-auto text-right">
 						</div>
 					</div>
@@ -62,46 +62,32 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-header" style="background:#2980b9; color:#fff;">List Bidan</h5><br>
+								<h5 class="card-header" style="background:#2980b9; color:#fff;">Jenis Imunisasi</h5><br>
 								<div class="form-gruop">
-
-									<div class="text-right">
-
-										<!-- <h7><strong> Posisi di sekolah </strong></h7> &nbsp;
-                                        <input> &nbsp; &nbsp; &nbsp; &nbsp; -->
-										<!-- Button trigger modal -->
-										<!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                            Tambah Pengguna
-                                        </button> -->
-									</div>
+									<form action="<?php echo base_url('Admin/addImunisasiAction'); ?>" method="post" enctype="multipart/form-data">
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Nama Vaksin</label>
+											<div class="col-sm-8">
+												<input type="text" style="border-radius: 10px;" name="nama_vaksin" class="form-control" id="nama_vaksin" placeholder="Nama Vaksin" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Umur</label>
+											<div class="col-sm-8">
+												<input type="text" style="border-radius: 10px;" name="umur" class="form-control" id="umur" placeholder="Umur" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											
+											<div class="col-sm-5">
+											<button type="submit" class="btn btn-success" style="width: 80px;">save</button>
+											</div>
+										</div>
+										
+										
+									</form>
 								</div><br>
-								<div class="table-responsive">
-									<table id="zero_config" class="table table-striped table-bordered">
-										<thead>
-											<tr>
-												<th><b>No</b></th>
-												<th><b>Nama Bidan</b></th>
-												<th><b>Foto Ktp</b></th>
-												<th><b>Aksi</b></th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-											$no = 1;
-											foreach ($bidan as $b) : ?>
-												<tr>
-													<td><?= $no++; ?></td>
-													<td><?= $b->nama ?></td>
-													<td><img src="<?= base_url('assets/ktp/' . $b->foto_ktp) ?>" width="100px" height="130px" alt=""></td>
-													<td>
-														<a onclick="return confirm('Apakah Anda Ingin Mengubah Aktivasi  ?');" href="<?= base_url('Admin/is_active/'. $b->id) ?>" class="btn <?= $b->is_active == 1 ? 'btn-info' : 'btn-warning'  ?>"><?= $b->is_active == 1 ? 'Aktif' : 'Non-Aktif' ?></a>
-														<a type="button" href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
-													</td>
-												</tr>
-											<?php endforeach; ?>
-										</tbody>
-									</table>
-								</div>
+
 							</div>
 						</div>
 					</div>

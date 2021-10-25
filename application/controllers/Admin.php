@@ -67,6 +67,24 @@ class Admin extends CI_Controller
 
 
 
+	public function addImunisasi(){
+		$this->load->view('Admin/add_imunisasi');
+	}
+	public function addImunisasiAction(){
+		$data = [
+			'nama_vaksin' => htmlspecialchars($this->input->post('nama_vaksin')),
+			'umur' => htmlspecialchars($this->input->post('umur'))
+		];
+		$this->db->insert('imunisasi', $data);
+		redirect('Admin/listImunisasi');
+	}
+	public function listImunisasi(){
+		$data['imunisasi'] = $this->db->query("SELECT * FROM imunisasi")->result();
+		$this->load->view('Admin/list_imunisasi', $data);
+	}
+
+
+
 	public function addBidan(){
 		$this->load->view('Admin/add_bidan');
 	}
@@ -82,6 +100,20 @@ class Admin extends CI_Controller
 			'role' => 'bidan'
 		];
 		$this->db->insert('user', $data);
+		redirect('Admin/listBidan');
+	}
+	public function is_active(){
+		$id = $this->uri->segment(3);
+		$this->db->select('is_active');
+		$set_active = $this->db->get_where('user', array('id' => $id));
+		$this->db->set('is_active', $set_active == 1 ? 0 : 1);
+		$this->db->where('id', $id);
+		$this->db->update('user');
+		redirect('Admin/listBidan');
+	}
+	public function deleteBidan(){
+		$id = $this->uri->segment(3);
+		$this->db->delete('user', array('id' => $id));
 		redirect('Admin/listBidan');
 	}
 	public function listBidan(){
