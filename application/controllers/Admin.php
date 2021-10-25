@@ -49,8 +49,20 @@ class Admin extends CI_Controller
 	public function addPosyandu(){
 		$this->load->view('Admin/add_posyandu');
 	}
+	public function addPosyanduAction(){
+		$data = [
+			'nama_posyandu' => htmlspecialchars($this->input->post('nama_posyandu')),
+			'penanggung_jawab' => htmlspecialchars($this->input->post('penanggung_jawab')),
+			'longitude' => $this->input->post('longitude'),
+			'latitude' => $this->input->post('latitude'),
+			'keterangan' => $this->input->post('keterangan')
+		];
+		$this->db->insert('posyandu', $data);
+		redirect('Admin/listPosyandu');
+	}
 	public function listPosyandu(){
-		$this->load->view('Admin/list_posyandu');
+		$data['posyandu'] = $this->db->query("SELECT * FROM posyandu")->result();
+		$this->load->view('Admin/list_posyandu', $data);
 	}
 
 

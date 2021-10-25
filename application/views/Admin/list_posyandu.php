@@ -80,15 +80,27 @@
                                         <thead>
                                             <tr>
                                                 <th><b>No</b></th>
-                                                <th><b>Nama Gtk</b></th>
-                                                <th><b>Username</b></th>
-                                                <th><b>Password</b></th>
-                                                <th><b>Jabatan</b></th>
+                                                <th><b>Nama Posyandu</b></th>
+                                                <th><b>Penanggung Jawab</b></th>
+                                                <th><b>Keterangan</b></th>
                                                 <th><b>Aksi</b></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          
+										<?php
+                                            $no = 1;
+                                            foreach ($posyandu as $p) : ?>
+                                                <tr>
+                                                    <td><?= $no++; ?></td>
+                                                    <td><?= $p->nama_posyandu ?></td>
+                                                    <td><?= $p->penanggung_jawab ?></td>
+                                                    <td><?= $p->keterangan ?></td>
+													<td>
+                                                        <a type="button" href="<?= base_url('Akun/hapusAkun/'. $p->id);   ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
                                         </tbody>
                                     </table>
                                 </div>

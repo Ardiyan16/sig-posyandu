@@ -93,8 +93,8 @@
                                                 <tr>
                                                     <td><?= $no++; ?></td>
                                                     <td><?= $b->nama ?></td>
-                                                    <td><?= $b->foto_ktp ?></td>
-                                                    <td><?= $b->is_active ?></td>
+                                                    <td><img src="<?= base_url('assets/ktp/'.$b->foto_ktp) ?>" width="100px" height="130px" alt=""></td>
+                                                    <td><a href="<?= base_url('Admin/is_active/'.$b->id) ?>" class="btn <?= $b->is_active == 1 ? 'btn-info' : 'btn-warning'  ?>"><?= $b->is_active == 1 ? 'Aktif' : 'Non-Aktif' ?></a></td>
                                                     <td>
                                                         <a type="button" href="<?= base_url('Akun/hapusAkun/'. $b->id);   ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
                                                     </td>

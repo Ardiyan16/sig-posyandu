@@ -64,34 +64,42 @@
                             <div class="card-body">
                                 <h5 class="card-header" style="background:#2980b9; color:#fff;">List Posyandu</h5><br>
                                 <div class="form-gruop">
-
-                                    <div class="text-right">
-
-                                        <!-- <h7><strong> Posisi di sekolah </strong></h7> &nbsp;
-                                        <input> &nbsp; &nbsp; &nbsp; &nbsp; -->
-                                        <!-- Button trigger modal -->
-                                        <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                            Tambah Pengguna
-                                        </button> -->
-                                    </div>
-                                </div><br>
-                                <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th><b>No</b></th>
-                                                <th><b>Nama Gtk</b></th>
-                                                <th><b>Username</b></th>
-                                                <th><b>Password</b></th>
-                                                <th><b>Jabatan</b></th>
-                                                <th><b>Aksi</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                          
-                                        </tbody>
-                                    </table>
-                                </div>
+									<form action="<?php echo base_url('Admin/addPosyanduAction'); ?>" method="post" enctype="multipart/form-data">
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Nama Posyandu</label>
+											<div class="col-sm-8">
+												<input type="text" style="border-radius: 10px;" name="nama_posyandu" class="form-control" id="nama_posyandu" placeholder="Nama Posyandu" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Penanggung Jawab</label>
+											<div class="col-sm-8">
+												<input type="text" style="border-radius: 10px;" name="penanggung_jawab" class="form-control" id="penanggung_jawab" placeholder="Penanggung Jawab" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Alamat</label>
+											<div class="col-sm-8">
+												<input type="text" style="border-radius: 10px;" name="longitude" class="form-control" id="longitude" value="-12944" readonly required>
+												<input type="text" style="border-radius: 10px;" name="latitude" class="form-control" id="latitude" value="-12944" readonly required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Keterangan</label>
+											<div class="col-sm-8">
+												<input type="text" style="border-radius: 10px;" name="keterangan" class="form-control" id="keterangan" value="-" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<div class="col-sm-5">
+											<button type="submit" class="btn btn-success" style="width: 80px;">save</button>
+											</div>
+										</div>
+										
+										
+									</form>
+								</div><br>
+                                
                             </div>
                         </div>
                     </div>
