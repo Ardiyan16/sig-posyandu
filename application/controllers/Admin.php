@@ -104,9 +104,17 @@ class Admin extends CI_Controller
 	}
 	public function is_active(){
 		$id = $this->uri->segment(3);
+		$url = $this->uri->segment(2);
 		$this->db->select('is_active');
-		$set_active = $this->db->get_where('user', array('id' => $id));
-		$this->db->set('is_active', $set_active == 1 ? 0 : 1);
+		$this->db->set('is_active', 0);
+		$this->db->where('id', $id);
+		$this->db->update('user');
+		redirect('Admin/listBidan');
+	}
+	public function is_deactive(){
+		$id = $this->uri->segment(3);
+		$this->db->select('is_active');
+		$this->db->set('is_active', 1);
 		$this->db->where('id', $id);
 		$this->db->update('user');
 		redirect('Admin/listBidan');
@@ -120,6 +128,14 @@ class Admin extends CI_Controller
 		$data['bidan'] = $this->db->query("SELECT * FROM user WHERE role='bidan'")->result();
 		$this->load->view('Admin/list_bidan',$data);
 	}
+	public function listUser(){
+		$data['user'] = $this->db->query("SELECT * FROM user WHERE role='user'")->result();
+		$this->load->view('Admin/list_user',$data);
+	}
+
+
+
+
 
 	
 	

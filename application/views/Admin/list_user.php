@@ -42,7 +42,7 @@
 			<div class="page-breadcrumb">
 				<div class="row">
 					<div class="col-12 d-flex no-block align-items-center">
-						<h4 class="page-title">Bidan</h4>
+						<h4 class="page-title">User</h4>
 						<div class="ml-auto text-right">
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h5 class="card-header" style="background:#2980b9; color:#fff;">List Bidan</h5><br>
+								<h5 class="card-header" style="background:#2980b9; color:#fff;">List User</h5><br>
 								<div class="form-gruop">
 
 									<div class="text-right">
@@ -80,7 +80,7 @@
 										<thead>
 											<tr>
 												<th><b>No</b></th>
-												<th><b>Nama Bidan</b></th>
+												<th><b>Nama User</b></th>
 												<th><b>Foto Ktp</b></th>
 												<th><b>Aksi</b></th>
 											</tr>
@@ -88,7 +88,7 @@
 										<tbody>
 											<?php
 											$no = 1;
-											foreach ($bidan as $b) : ?>
+											foreach ($user as $b) : ?>
 												<tr>
 													<td><?= $no++; ?></td>
 													<td><?= $b->nama ?></td>

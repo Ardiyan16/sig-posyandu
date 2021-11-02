@@ -126,9 +126,8 @@
 
 					</ul>
 				</li>
+				<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url('Admin/listUser'); ?>" aria-expanded="false"><i class="mdi mdi-contacts"></i><span class="hide-menu">Data User</span></a></li>
 				<?php } ?>
-				
-
 				<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-pen"></i><span class="hide-menu">Laporan</span></a>
 					<ul aria-expanded="false" class="collapse  first-level">
 						<li class="sidebar-item"><a href="<?= base_url() ?>Penilaian/show_nilai" class="sidebar-link"><i class="mdi mdi-calendar-check"></i><span class="hide-menu"> Hasil Penilaian </span></a></li>
