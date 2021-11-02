@@ -91,7 +91,11 @@ class Admin extends CI_Controller
 	public function addBidanAction(){
 		$data = [
 			'nama' => htmlspecialchars($this->input->post('nama_bidan')),
+			'username' => htmlspecialchars($this->input->post('username')),
 			'email' => htmlspecialchars($this->input->post('email')),
+			'tgl_lahir' => htmlspecialchars($this->input->post('tgl_lahir')),
+			'alamat' => htmlspecialchars($this->input->post('alamat')),
+			'no_tlp' => htmlspecialchars($this->input->post('no_tlp')),
 			'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 			'foto_ktp' => 'default.jpg',
 			'longitude' => '-',
@@ -104,20 +108,29 @@ class Admin extends CI_Controller
 	}
 	public function is_active(){
 		$id = $this->uri->segment(3);
-		$url = $this->uri->segment(2);
+		$url = $this->uri->segment(4);
 		$this->db->select('is_active');
 		$this->db->set('is_active', 0);
 		$this->db->where('id', $id);
 		$this->db->update('user');
-		redirect('Admin/listBidan');
+		if($url == 'bidan'){
+			redirect('Admin/listBidan');
+		}else{
+			redirect('Admin/listUser');
+		}
 	}
 	public function is_deactive(){
 		$id = $this->uri->segment(3);
+		$url = $this->uri->segment(4);
 		$this->db->select('is_active');
 		$this->db->set('is_active', 1);
 		$this->db->where('id', $id);
 		$this->db->update('user');
-		redirect('Admin/listBidan');
+		if($url == 'bidan'){
+			redirect('Admin/listBidan');
+		}else{
+			redirect('Admin/listUser');
+		}
 	}
 	public function deleteBidan(){
 		$id = $this->uri->segment(3);

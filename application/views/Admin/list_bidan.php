@@ -94,7 +94,7 @@
 													<td><?= $b->nama ?></td>
 													<td><img src="<?= base_url('assets/ktp/' . $b->foto_ktp) ?>" width="100px" height="130px" alt=""></td>
 													<td>
-														<a onclick="return confirm('Apakah Anda Ingin Mengubah Aktivasi  ?');" href="<?= $b->is_active == 1 ?  base_url('Admin/is_active/'. $b->id) : base_url('Admin/is_deactive/'. $b->id)  ?>" class="btn <?= $b->is_active == 1 ? 'btn-info' : 'btn-warning'  ?>"><?= $b->is_active == 1 ? 'Aktif' : 'Non-Aktif' ?></a>
+														<a onclick="return confirm('Apakah Anda Ingin Mengubah Aktivasi  ?');" href="<?= $b->is_active == 1 ?  base_url('Admin/is_active/'. $b->id.'/'. $b->role) : base_url('Admin/is_deactive/'. $b->id.'/'. $b->role)  ?>" class="btn <?= $b->is_active == 1 ? 'btn-info' : 'btn-warning'  ?>"><?= $b->is_active == 1 ? 'Aktif' : 'Non-Aktif' ?></a>
 														<a type="button" href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
 													</td>
 												</tr>

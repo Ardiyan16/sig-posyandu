@@ -138,24 +138,35 @@ class Auth extends CI_Controller
 		// 	redirect('user');
 		// }
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+		$this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
+			'is_unique' => 'Username Sudah Digunakan'
+		]);
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
-			'is_unique' => 'This email has already registered!'
+			'is_unique' => 'Email Sudah Digunakan'
 		]);
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
 			'matches' => 'Password dont match!',
 			'min_length' => 'Password too short!'
 		]);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+		$this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required|trim');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+		$this->form_validation->set_rules('no_tlp', 'No Tlp', 'required|trim');
 
 		if ($this->form_validation->run() == false) {
 			$data['title'] = 'Registration';
 			$this->load->view('auth/authentication-register', $data);
 		} else {
 			$email = $this->input->post('email', true);
+			$username = $this->input->post('username', true);
 			$data = [
 				'nama' => htmlspecialchars($this->input->post('nama', true)),
+				'username' => htmlspecialchars($username),
 				'email' => htmlspecialchars($email),
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+				'tgl_lahir' => $this->input->post('tgl_lahir', true),
+				'alamat' => $this->input->post('alamat', true),
+				'no_tlp' => $this->input->post('no_tlp', true),
 				'foto_ktp' => $this->_uploadImage(),
 				'longitude' => $this->input->post('longitude'),
 				'latitude' => $this->input->post('latitude'),

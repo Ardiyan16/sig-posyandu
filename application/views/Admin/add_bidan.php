@@ -72,9 +72,33 @@
 											</div>
 										</div>
 										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Username</label>
+											<div class="col-sm-8">
+												<input type="text" style="border-radius: 10px;" name="username" class="form-control" id="username" placeholder="Nama Bidan" required>
+											</div>
+										</div>
+										<div class="form-group row">
 											<label for="fname" class="col-sm-4  control-label col-form-label">Email</label>
 											<div class="col-sm-8">
 												<input type="text" style="border-radius: 10px;" name="email" class="form-control" id="email" placeholder="Email bidan" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Tanggal Lahir</label>
+											<div class="col-sm-8">
+												<input type="date" style="border-radius: 10px;" name="tgl_lahir" class="form-control" id="tgl_lahir" placeholder="Tanggal lahir" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">Alamat</label>
+											<div class="col-sm-8">
+												<input type="text" style="border-radius: 10px;" name="alamat" class="form-control" id="alamat" placeholder="Alamat bidan" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="fname" class="col-sm-4  control-label col-form-label">No HP</label>
+											<div class="col-sm-8">
+												<input type="number" style="border-radius: 10px;" name="no_hp" class="form-control" id="no_hp" placeholder="No HP bidan" required>
 											</div>
 										</div>
 										<div class="form-group row">
