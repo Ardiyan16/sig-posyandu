@@ -192,7 +192,7 @@ class Auth extends CI_Controller
 		if ($this->upload->do_upload('foto_ktp')) {
 			return $this->upload->data("file_name");
 		}
-		return "default.jpg";
+		return "default.png";
 	}
 
 

@@ -106,6 +106,7 @@
 							<li class="sidebar-item"><a href="<?= base_url() ?>gtk" class="sidebar-link"><i class="mdi mdi-school"></i><span class="hide-menu">Tambah Posyandu</span></a></li>
 						</ul>
 					</li>
+					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url('Bidan/profile'); ?>" aria-expanded="false"><i class="mdi mdi-contacts"></i><span class="hide-menu">Profil Saya</span></a></li>
 				<?php } else { ?>
 					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Data Posyandu</span></a>
 						<ul aria-expanded="false" class="collapse  first-level">
@@ -142,7 +143,7 @@
 					</ul>
 				</li>
 				<br>
-				<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url('Profile'); ?>" aria-expanded="false"><i class="mdi mdi-contacts"></i><span class="hide-menu">Tentang Sistem</span></a></li>
+				
 			</ul>
 		</nav>
 		<!-- End Sidebar navigation -->

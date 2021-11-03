@@ -42,8 +42,14 @@
 			<div class="page-breadcrumb">
 				<div class="row">
 					<div class="col-12 d-flex no-block align-items-center">
-						<h4 class="page-title">Bidan</h4>
+						<h4 class="page-title">Form GTK</h4>
 						<div class="ml-auto text-right">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Library</li>
+								</ol>
+							</nav>
 						</div>
 					</div>
 				</div>
@@ -56,87 +62,117 @@
 			<!-- ============================================================== -->
 			<div class="container-fluid">
 				<!-- ============================================================== -->
-				<!-- Sales Cards  -->
+				<!-- Start Page Content -->
 				<!-- ============================================================== -->
 				<div class="row">
-					<div class="col-12">
+					<div class="col-md-12"><br>
 						<div class="card">
-							<div class="card-body">
-								<h5 class="card-header" style="background:#2980b9; color:#fff;">List Bidan</h5><br>
-								<div class="form-gruop">
-
+							<form class="form-horizontal">
+								<div class="card-body">
+									<h2 class="text-center">Profile Bidan</h2>
 									<div class="text-right">
-
-										<!-- <h7><strong> Posisi di sekolah </strong></h7> &nbsp;
-                                        <input> &nbsp; &nbsp; &nbsp; &nbsp; -->
-										<!-- Button trigger modal -->
-										<!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                                            Tambah Pengguna
-                                        </button> -->
 									</div>
-								</div><br>
-								<div class="table-responsive">
-									<table id="zero_config" class="table table-striped table-bordered">
-										<thead>
-											<tr>
-												<th><b>No</b></th>
-												<th><b>Nama Bidan</b></th>
-												<th><b>Username</b></th>
-												<th><b>No TLP</b></th>
-												<th><b>Foto Ktp</b></th>
-												<th><b>Aksi</b></th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
-											$no = 1;
-											foreach ($bidan as $b) : ?>
-												<tr>
-													<td><?= $no++; ?></td>
-													<td><?= $b->nama ?></td>
-													<td><?= $b->username ?></td>
-													<td><?= $b->no_tlp ?></td>
-													<td><img src="<?= base_url('assets/ktp/' . $b->foto_ktp) ?>" width="100px" height="130px" alt=""></td>
-													<td>
-														<a onclick="return confirm('Apakah Anda Ingin Mengubah Aktivasi  ?');" href="<?= $b->is_active == 1 ?  base_url('Admin/is_active/'. $b->id.'/'. $b->role) : base_url('Admin/is_deactive/'. $b->id.'/'. $b->role)  ?>" class="btn <?= $b->is_active == 1 ? 'btn-info' : 'btn-warning'  ?>"><?= $b->is_active == 1 ? 'Aktif' : 'Non-Aktif' ?></a>
-														<a type="button" href="<?= base_url('Admin/deleteBidan/' . $b->id);   ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data  ?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus" class="mdi mdi-24px mdi-delete"></a>
-													</td>
-												</tr>
-											<?php endforeach; ?>
-										</tbody>
-									</table>
-								</div>
-							</div>
+									<br>
+									<div class="row">
+										<div class="col-md-6">
+
+											<div class="form-group row">
+												<label for="fname" class="col-sm-4  control-label col-form-label">ID Bidan</label>
+												<div class="col-sm-8">
+													<input type="text" style="border-radius: 10px;" name="id" class="form-control" id="id" placeholder="Id Bidan" value="<?= $user['id']; ?>" readonly required>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="fname" class="col-sm-4  control-label col-form-label">Username Bidan</label>
+												<div class="col-sm-8">
+													<input type="text" style="border-radius: 10px;" name="username" class="form-control" id="username" placeholder="Username Bidan" value="<?= $user['username']; ?>"  required>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="fname" class="col-sm-4  control-label col-form-label">Nama Bidan</label>
+												<div class="col-sm-8">
+													<input type="text" style="border-radius: 10px;" name="nama" class="form-control" id="nama" placeholder="Nama Bidan" value="<?= $user['nama']; ?>"  required>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="fname" class="col-sm-4  control-label col-form-label">No Tlp Bidan</label>
+												<div class="col-sm-8">
+													<input type="text" style="border-radius: 10px;" name="no_tlp" class="form-control" id="no_tlp" placeholder="No Tlp Bidan" value="<?= $user['no_tlp']; ?>"  required>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="fname" class="col-sm-4  control-label col-form-label">Password</label>
+												<div class="col-sm-8">
+													<input type="password" style="border-radius: 10px;" name="password1" class="form-control" id="password1" placeholder="password1 Bidan" value="<?= $user['password']; ?>" readonly required>
+												</div>
+											</div>
+										</div><br>
+										<div class="col-md-6">
+											<br>
+											<div class="col-sm-5 text-right">
+												<h5 class="">Foto GTK</h5>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-10 text-right">
+													<img width="300px;" height="400px" src="<?= base_url('assets/ktp/') . $user['foto_ktp']; ?>" alt="...">
+												</div>
+											</div>
+										</div><br>
+									</div>
+									<div class="border-top">
+
+									</div>
+							</form>
 						</div>
 					</div>
 				</div>
-				<!-- ============================================================== -->
-				<!-- Sales chart -->
-				<!-- ============================================================== -->
-
-				<!-- ============================================================== -->
-				<!-- Sales chart -->
-				<!-- ============================================================== -->
-				<!-- ============================================================== -->
-				<!-- Recent comment and chats -->
-				<!-- ============================================================== -->
-
-				<!-- ============================================================== -->
-				<!-- Recent comment and chats -->
-				<!-- ============================================================== -->
 			</div>
 
+
+			<!-- Logout Delete Confirmation-->
+			<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Apakah Anda Yakin Akan Menghapus Data GTK?</h5>
+							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" type="button" data-dismiss="modal">BATAL</button>
+							<a id="btn-delete" class="btn btn-danger" href="#">HAPUS</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Apakah Anda Yakin Akan Mengubah Data GTK?</h5>
+							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">Ubah data jika diperlukan atau pembaruan.</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" type="button" data-dismiss="modal">BATAL</button>
+							<a id="btn-edit" class="btn btn-warning" href="#">EDIT</a>
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- ============================================================== -->
-			<!-- End Container fluid  -->
+			<!-- End PAge Content -->
 			<!-- ============================================================== -->
 			<!-- ============================================================== -->
-			<!-- footer -->
+			<!-- Right sidebar -->
 			<!-- ============================================================== -->
-			<footer class="footer text-center">
-				COPYRIGHT © BIKEA TECHNOCRAFT 2019
-			</footer>
+			<!-- .right-sidebar -->
 			<!-- ============================================================== -->
-			<!-- End footer -->
+			<!-- End Right sidebar -->
 			<!-- ============================================================== -->
 		</div>
 		<!-- ============================================================== -->

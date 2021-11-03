@@ -47,6 +47,10 @@ class Bidan extends CI_Controller
         $this->load->view('Bidan/index');
     }       
 
-	
+	public function profile(){
+		$id = $this->session->userdata('iduser');
+		$data['user'] = $this->db->get_where('user', ['id' => $id])->row_array();
+		$this->load->view('Bidan/profile',$data);
+	}
     
 }

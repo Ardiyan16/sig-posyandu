@@ -97,7 +97,7 @@ class Admin extends CI_Controller
 			'alamat' => htmlspecialchars($this->input->post('alamat')),
 			'no_tlp' => htmlspecialchars($this->input->post('no_tlp')),
 			'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-			'foto_ktp' => 'default.jpg',
+			'foto_ktp' => 'default.png',
 			'longitude' => '-',
 			'latitude' => '-',
 			'is_active' => 1,
