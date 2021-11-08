@@ -127,7 +127,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                COPYRIGHT © BIKEA TECHNOCRAFT 2019
+                COPYRIGHT © BIKEA TECHNOCRAFT 2021
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

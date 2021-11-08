@@ -13,6 +13,7 @@ class User extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 		$this->load->helper(array('form', 'url'));
+        $this->load->model('M_map');
 		
 		if($this->session->userdata('role') == null){
 			echo "<script>
@@ -47,6 +48,17 @@ class User extends CI_Controller
         $this->load->view('User/index');
     }       
 
+    public function v_maps()
+    {
+        $this->load->view('User/maps');
+    }
+
+    public function lokasi_anda()
+    {
+        $id = $this->session->userdata('id');
+        $data = $this->M_map->lokasi_user($id);
+        echo json_encode($data);
+    }
 
 	
     
