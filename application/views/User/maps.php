@@ -82,11 +82,11 @@
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-                <!-- <div class="row">
+            <!-- <div class="row">
                     <button type="button" style="margin-top: 30px;" class="btn btn-primary" onclick="getLocation()">Get Lokasi</button>
                 </div> -->
-                <div id="map"></div>
-                <br>
+            <div id="map"></div>
+            <br>
 
             <!-- <footer class="footer text-center" style="margin-top: 30px;">
                 COPYRIGHT © BIKEA TECHNOCRAFT 2021
@@ -132,14 +132,33 @@
     <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyAFTimIhQoFCg8bF7PAMgDWi38QqqvaCx8&callback=initAutocomplete" async defer></script>
 
     <script>
+        let lati;
+        let long;
+
+        function tampil_data() {
+            $.ajax({
+                url: "<?php echo base_url() ?>Transaksi/getDataBarang",
+                method: 'GET',
+                dataType: 'JSON',
+                success: function(result) {
+                    lati = val(result.latitude);
+                    long = val(result.longtitude);
+                }
+            })
+        }
+
         function initAutocomplete() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: -8.3427328,
-                    lng: 113.573888
-                },
-                zoom: 13,
-                mapTypeId: 'roadmap'
+            var mapCanvas = document.getElementById('map');
+            var center = new google.maps.LatLng(-8.346906, 113.472440);
+            var mapOptions = {
+                zoom: 14,
+                center: center
+            };
+            map = new google.maps.Map(mapCanvas, mapOptions);
+            var marker = new google.maps.Marker({
+                position: center,
+                map: map,
+                title: "Rumah Anda!"
             });
 
             // Membuat Kotak pencarian terhubung dengan tampilan map
@@ -186,7 +205,7 @@
                         map: map,
                         icon: icon,
                         title: place.name,
-                        position: place.geometry.location,
+                        position: map,
                         drag: true
 
                     }));

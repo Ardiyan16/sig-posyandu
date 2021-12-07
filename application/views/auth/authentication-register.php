@@ -33,28 +33,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                 </div>
-<<<<<<< Updated upstream
-								<?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
-                                <div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Masukan Username Anda..." value="<?= set_value('username'); ?>">
-                                </div>
-								<?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
-                                <div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="Masukan Email..." value="<?= set_value('email'); ?>">
-=======
                                 <input type="text" class="form-control form-control-lg" id="nama" name="nama" placeholder="Masukan Nama Anda..." value="<?= set_value('nama'); ?>">
                             </div>
                             <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
->>>>>>> Stashed changes
                                 </div>
                                 <input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="Masukan Email..." value="<?= set_value('email'); ?>">
                             </div>
@@ -69,42 +53,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                 </div>
-<<<<<<< Updated upstream
-								<?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                    <input type="date" class="form-control form-control-lg" id="tgl_lahir" name="tgl_lahir" placeholder="Masukan Tanggal Lahir..." value="<?= set_value('tgl_lahir'); ?>">
-                                </div>
-								<?= form_error('tgl_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-lg" id="alamat" name="alamat" placeholder="Masukan Alamat Anda..." value="<?= set_value('alamat'); ?>">
-                                </div>
-								<?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-lg" id="no_tlp" name="no_tlp" placeholder="Masukan No Tlp anda..." value="<?= set_value('no_tlp'); ?>">
-                                </div>
-								<?= form_error('no_tlp', '<small class="text-danger pl-3">', '</small>'); ?>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i style="margin-right: 4px;" class="ti-user"></i>      Upload KTP</span>
-                                    </div>
-                                    <input type="file" class="form-control form-control-lg" id="foto_ktp" name="foto_ktp">
-=======
                                 <input type="password" class="form-control form-control-lg" id="password2" name="password2" placeholder="Ulangi Password..." value="<?= set_value('password2'); ?>">
                             </div>
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-success text-white" id="basic-addon1"><i style="margin-right: 4px;" class="ti-user"></i> Upload KTP</span>
->>>>>>> Stashed changes
                                 </div>
                                 <input type="file" class="form-control form-control-lg" id="foto_ktp" name="foto_ktp">
                             </div>
@@ -206,7 +160,7 @@
 
             var myOptions = {
                 center: latlon,
-                zoom: 14,
+                zoom: 17,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
 

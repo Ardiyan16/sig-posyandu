@@ -55,9 +55,8 @@ class User extends CI_Controller
 
     public function lokasi_anda()
     {
-        $id = $this->session->userdata('id');
-        $data = $this->M_map->lokasi_user($id);
-        echo json_encode($data);
+        $id = $this->session->userdata('iduser');
+        $this->M_map->lokasi_user($id);
     }
 
 	
